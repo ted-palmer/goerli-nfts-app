@@ -20,7 +20,7 @@ const Home: NextPage = () => {
         <h1 className='text-6xl mt-8 mb-4 text-white'>Görli Nfts</h1>
         <p className='text-[#AFEEEE] text-center mb-8'>A quick way to get nfts in your wallet for testing</p>
         <svg xmlns="http://www.w3.org/2000/svg" width="200" height="200" style={{ background: "deeppink" }}>
-          <text x="28" y="130" font-size="120" fill="black">Gö</text>
+          <text x="28" y="130" fontSize="120" fill="black">Gö</text>
           <text x="20" y="180" fill="black">Token # 1</text>
         </svg>
         <Mint />
