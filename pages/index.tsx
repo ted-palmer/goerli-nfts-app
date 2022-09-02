@@ -13,9 +13,6 @@ const Home: NextPage = () => {
           content="A quick way to get nfts in your wallet for testing"
         />
         <link rel="icon" href="/favicon.ico" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin />
-        <link href="https://fonts.googleapis.com/css2?family=Source+Code+Pro&display=swap" rel="stylesheet" />
       </Head>
 
       <main className='mx-auto max-w-xl flex flex-col items-center py-12 px-4'>
