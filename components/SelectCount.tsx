@@ -15,6 +15,7 @@ const SelectCount = ({ handleChange }: any ) => {
         className='w-full mb-8 cursor-pointer'
         onChange={e => handleChange(e)}
         options={options}
+        placeholder="Number of NFTs to mint"
       />
   )
 }

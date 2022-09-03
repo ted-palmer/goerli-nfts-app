@@ -43,7 +43,7 @@ function Mint() {
   const handleChange = (e: SingleValue<{ value: string; label: string; }>) => {
     if (e?.value) {
       setCount(parseInt(e.value));
-    }
+    }''
   }
 
   const isMinted = txSuccess;
