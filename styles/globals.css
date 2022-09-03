@@ -8,7 +8,8 @@ body {
   margin: 0;
   font-family: 'Source Code Pro', monospace, -apple-system, BlinkMacSystemFont, Segoe UI, Roboto, Oxygen,
     Ubuntu, Cantarell, Fira Sans, Droid Sans, Helvetica Neue, sans-serif;
-  background-color: rgb(26, 25, 25);
+  background-image: url("/images/background.png");
+  background-size: 25px 25px;
 }
 
 a {
@@ -18,4 +19,35 @@ a {
 
 * {
   box-sizing: border-box;
+}
+
+
+/* Card Flip Styling */
+
+.flip {
+  width: 200px;
+  height: 200px;   
+  text-align: center;
+  perspective: 600px;  
+}
+.flip-content {
+  width: 100%;
+  height: 100%;
+  transition: transform 0.4s;
+  transform-style: preserve-3d;
+}
+.flip:hover .flip-content {
+  transform: rotateY(-180deg);
+  transition: transform 0.3s;
+}
+
+.flip-front, .flip-back {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  line-height: 150px;
+  backface-visibility: hidden;  
+}
+.flip-back {
+  transform: rotateY(180deg);
 }

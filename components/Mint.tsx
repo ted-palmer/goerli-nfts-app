@@ -1,14 +1,16 @@
-import { useState, ChangeEvent } from 'react'
+import { useState } from 'react';
+import { SingleValue } from 'react-select';
 import { 
   useAccount,
   useContractWrite,
   usePrepareContractWrite,
   useWaitForTransaction
-} from 'wagmi'
+} from 'wagmi';
 import contractInterface from '../contract-abi.json';
+import SelectCount from './SelectCount';
 
 const contractConfig = {
-  addressOrName: '0x7a49492EFa8afA5ae80DAde89834a2C193138F01',
+  addressOrName: '0x932Ca55B9Ef0b3094E8Fa82435b3b4c50d713043',
   contractInterface: contractInterface,
 };
 
@@ -38,27 +40,20 @@ function Mint() {
     hash: mintData?.hash,
   });
 
-  const handleChange = (e: ChangeEvent<HTMLSelectElement>) => {
-    if (e.target!.value) {
-      setCount(parseInt(e.target!.value));
-      console.log(count)
+  const handleChange = (e: SingleValue<{ value: string; label: string; }>) => {
+    if (e?.value) {
+      setCount(parseInt(e.value));
     }
   }
 
   const isMinted = txSuccess;
 
   return (
-    <div className='flex flex-col items-center w-full'>
-      <select value={count} onChange={e => handleChange(e)} className='mb-10'>
-        <option value="1">1</option>
-        <option value="2">2</option>
-        <option value="3">3</option>
-      </select>
+    <div className='flex flex-col items-center order-2 sm:order-1'>
+      <SelectCount handleChange={handleChange}/>
       <button
-        className="w-80 bg-[#AFEEEE] hover:bg-[hotpink] disabled:bg-gray-300 py-2 px-8 mb-4 rounded-lg text-xl font-bold"
-        disabled={!mint || !isConnected || isMintLoading || isMintStarted}
-        data-mint-loading={isMintLoading}
-        data-mint-started={isMintStarted}
+        className={`w-80 hover:bg-[#44EEEE] active:bg-[#44EEEE] disabled:bg-gray-300 py-2 px-8 mb-4 rounded-lg text-xl font-bold ${isMintStarted || isMintLoading || isMinted ? "bg-[#44EEEE]" : "bg-[#AFEEEE]"}`}
+        disabled={!mint || !isConnected}
         onClick={() => mint?.()}
       >
         {isMintLoading && 'Waiting for approval'}
@@ -67,8 +62,18 @@ function Mint() {
         {!isMintLoading && !isMintStarted && !isMinted && 'Mint'}
       </button>
 
+      {!isConnected && (
+        <p className='text-white text-sm'>Connect your wallet to mint</p>
+      )}
+
+      {mintError && mintError.message && (
+        <div className='w-60 overflow-scroll'>
+          <p className='text-center text-red-400 my-2'>{mintError.message}</p>
+        </div>
+      )}
+
       {isMinted && (
-        <a href={`https://goerli.etherscan.io//tx/${mintData?.hash}`} className='text-[#AFEEEE]'>
+        <a href={`https://goerli.etherscan.io//tx/${mintData?.hash}`} className='text-[#AFEEEE] hover:text-[hotpink]' target="_blank" rel="noreferrer">
           View transaction
         </a>
       )}
