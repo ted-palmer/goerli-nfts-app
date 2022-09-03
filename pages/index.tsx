@@ -55,7 +55,7 @@ const Home: NextPage = () => {
           </div>
         </div>
         <footer className='absolute bottom-0 flex flex-row items-center py-4 h-24'>
-          <a href="https://goerli.etherscan.io/address/0x7a49492efa8afa5ae80dade89834a2c193138f01" className='text-[#AFEEEE] hover:text-[hotpink]' target="_blank" rel="noreferrer">Contract</a>
+          <a href="https://goerli.etherscan.io/address/0x932ca55b9ef0b3094e8fa82435b3b4c50d713043" className='text-[#AFEEEE] hover:text-[hotpink]' target="_blank" rel="noreferrer">Contract</a>
           <span className='mx-2 text-[#AFEEEE]'>|</span>
           <a href="https://github.com/ted-palmer/goerli-nfts-app" className='text-[#AFEEEE] hover:text-[hotpink]' target="_blank" rel="noreferrer">Github</a>
           <span className='mx-2 text-[#AFEEEE]'>|</span>
