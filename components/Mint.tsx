@@ -56,7 +56,7 @@ function Mint() {
         disabled={!mint || !isConnected}
         onClick={() => mint?.()}
       >
-        {isMintLoading && 'Waiting for approval'}
+        {isMintLoading && 'Confirming in wallet'}
         {isMintStarted && !isMinted && 'Minting...'}
         {!isMintLoading && isMintStarted && isMinted && 'Minted!'}
         {!isMintLoading && !isMintStarted && !isMinted && 'Mint'}
