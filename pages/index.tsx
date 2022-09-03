@@ -16,7 +16,6 @@ const Home: NextPage = () => {
       setColorIndex(0);
   }
 
-
   return (
     <div className=''>
       <Head>
