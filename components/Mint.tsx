@@ -15,7 +15,7 @@ const contractConfig = {
 };
 
 function Mint() {
-  const [count, setCount] = useState(1);
+  const [count, setCount] = useState<number>(1);
   const { isConnected } = useAccount();
 
   const { config: contractWriteConfig } = usePrepareContractWrite({
@@ -35,15 +35,14 @@ function Mint() {
   const {
     data: txData,
     isSuccess: txSuccess,
-    error: txError,
   } = useWaitForTransaction({
     hash: mintData?.hash,
   });
 
-  const handleChange = (e: SingleValue<{ value: string; label: string; }>) => {
+  const handleChange = (e: SingleValue<{ value: number; label: string; }>) => {
     if (e?.value) {
-      setCount(parseInt(e.value));
-    }''
+      setCount(e.value);
+    }
   }
 
   const isMinted = txSuccess;
@@ -67,8 +66,8 @@ function Mint() {
       )}
 
       {mintError && mintError.message && (
-        <div className='w-60 overflow-scroll'>
-          <p className='text-center text-red-400 my-2'>{mintError.message}</p>
+        <div className='w-80 max-h-40 overflow-scroll'>
+          <p className='text-center text-red-400 my-2 break-words'>{mintError.message}</p>
         </div>
       )}
 

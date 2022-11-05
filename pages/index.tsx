@@ -6,7 +6,7 @@ import Mint from '../components/Mint';
 
 const Home: NextPage = () => {
   const colors = ['deeppink', 'deepskyblue', 'springgreen', 'yellow', 'darkviolet', 'crimson'];
-  const [colorIndex, setColorIndex] = useState(0);
+  const [colorIndex, setColorIndex] = useState<number>(0);
 
   const nextColor = () => {
     const newColorIndex = colorIndex + 1;
